@@ -23,7 +23,7 @@ function getComputerChoice() {
     if (random == 0) choice = "rock";
     else if (random == 1) choice = "paper";
     else choice = "scissors";
-    console.log(random);
+    // console.log(random);
     console.log(choice);
     return choice;
 } //end function get computer choice
