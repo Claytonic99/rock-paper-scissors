@@ -41,36 +41,21 @@ function playRound(humanChoice, computerChoice) {
     let result = -1; //-1 is not determined, 0 is a tie, 1 is user wins, 2 is computer wins
 
     // Determine Results
-    switch (humanChoice)
+    if (humanChoice == computerChoice) //if human and computer pick the same thing, result is a tie
     {
-        case "rock":
-        switch (computerChoice)
-        {
-            case "rock": result = 0; break; //a tie
-            case "paper": result = 2; break; //computer wins
-            case "scissors": result = 1; break; //human wins
-        }
-        break;
-
-        case "paper":
-        switch (computerChoice)
-        {
-            case "rock": result = 1; break; //human wins
-            case "paper": result = 0; break; //a tie
-            case "scissors": result = 2; break; //computer wins
-        }
-        break;
-
-        case "scissors":
-        switch (computerChoice)
-        {
-            case "rock": result = 2; break; //computer wins
-            case "paper": result = 1; break; //human wins
-            case "scissors": result = 0; break; //a tie
-        }
-        break;
+        result = 0;
     }
-
+    else if ( //here are all the possibilities for the human to win
+        (humanChoice == "rock" && computerChoice == "scissors") ||
+        (humanChoice == "paper" && computerChoice == "rock") ||
+        (humanChoice == "scissors" && computerChoice == "paper")
+    ) {
+        result = 1;
+    }
+    else { //the only other possible result is the computer wins
+        result = 2;
+    }
+    
     return result;
 } //end function play round
 
@@ -87,7 +72,7 @@ function playGame() {
         humanChoice = getHumanChoice();
         computerChoice = getComputerChoice();
         result = playRound(humanChoice, computerChoice); //get result
-        
+        console.log(result);
         // Show the result
         switch (result)
         {
@@ -107,7 +92,7 @@ function playGame() {
         } //end switch result
     }
 
-    // End of game
+    // Show final score
     console.log("Final Score "+humanScore+":"+computerScore);
     if (humanScore > computerScore) console.log("Congratulations! You're the winner!\nF5 to play again?");
     else if (humanScore < computerScore) console.log("So sorry, you lose.\nF5 to play again?");
