@@ -18,12 +18,12 @@ the result is shown on screen
 
 */
 function getComputerChoice() {
-    let random = Math.random();
+    let random = Math.floor(Math.random()*3);
     let choice = "";
-    if (random < 0.33) choice = "rock";
-    else if (random < 0.66) choice = "paper";
+    if (random == 0) choice = "rock";
+    else if (random == 1) choice = "paper";
     else choice = "scissors";
-    // console.log(random);
+    console.log(random);
     console.log(choice);
     return choice;
 } //end function get computer choice
@@ -72,7 +72,6 @@ function playGame() {
         humanChoice = getHumanChoice();
         computerChoice = getComputerChoice();
         result = playRound(humanChoice, computerChoice); //get result
-        console.log(result);
         // Show the result
         switch (result)
         {
@@ -93,7 +92,7 @@ function playGame() {
     }
 
     // Show final score
-    console.log("Final Score "+humanScore+":"+computerScore);
+    console.log(`Final Score ${humanScore}:${computerScore}`);
     if (humanScore > computerScore) console.log("Congratulations! You're the winner!\nF5 to play again?");
     else if (humanScore < computerScore) console.log("So sorry, you lose.\nF5 to play again?");
     else console.log("Wow! A tie game!\nF5 to play again?");
